@@ -8,10 +8,13 @@ abstract class  Repository{
 
     protected $model = false;
 
-    public function get(){
+    public function get($select = '*', $take = false){
 
-        $builder = $this->model->select('*');//select - указывает какие поля нужно выбрать из БД
+        $builder = $this->model->select($select);//select - указывает какие поля нужно выбрать из БД
 
+        if($take){
+            $builder->take($take);
+        }
 
         return $builder->get();
     }

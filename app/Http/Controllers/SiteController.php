@@ -10,10 +10,10 @@ use Menu;
 class SiteController extends Controller
 {
     //
-    protected  $p_rep;
+    protected  $p_rep;  //portfolio
     protected  $s_rep;
     protected  $a_rep;
-    protected  $m_rep;
+    protected  $m_rep; //menu
 
     protected $template; //шаблон сайта
 

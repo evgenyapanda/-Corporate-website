@@ -36,7 +36,7 @@
         @set($i, $i+1)
         @endforeach
 
-
+    </ul>
 
     <div id="yit-widget-area" class="group">
         <div class="yit-widget-content inner group">
