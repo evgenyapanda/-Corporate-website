@@ -19,4 +19,8 @@ abstract class  Repository{
         return $builder->get();
     }
 
+    protected function check($result){
+
+    }
+
 }
