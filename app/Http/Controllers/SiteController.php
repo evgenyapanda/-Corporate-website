@@ -12,7 +12,7 @@ class SiteController extends Controller
     //
     protected  $p_rep;  //portfolio
     protected  $s_rep;
-    protected  $a_rep;
+    protected  $a_rep; //sitebar
     protected  $m_rep; //menu
 
     protected $template; //шаблон сайта
@@ -39,6 +39,11 @@ class SiteController extends Controller
 
         $navigation = view(env('THEME').'.layouts.navigation')->with('menu', $menu)->render();//преобразует шаблон в строку
         $this->vars = array_add($this->vars,'navigation', $navigation);
+
+        if($this->contentRightBar){
+            $rightBar = view(env('THEME').'.rightBar')->with('content_rightBar', $this->contentRightBar)->render();
+            $this->vars = array_add($this->vars,'rightBar', $rightBar);
+        }
         return view($this->template)->with($this->vars); //вызывается шаблон и в него передаються переменные
     }
 

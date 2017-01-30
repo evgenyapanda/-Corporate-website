@@ -11,7 +11,7 @@
 
                     <div class="hentry work group portfolio-sticky portfolio-full-description">
                         <div class="work-thumbnail">
-                            <a class="thumb"><img src="{{ asset(env('THEME')) }}/images/projects/0081-385x192.jpg" alt="0081" title="0081" /></a>
+                            <a class="thumb"><img src="{{ asset(env('THEME')) }}/images/projects/{{ $item->img_medium }}" alt="0081" title="0081" /></a>
                             <div class="work-overlay">
                                 <h3><a href="{{route('portfolios.show', ['alias' => $item->alias])}}">{{ $item->title }}</a></h3>
                                 <p class="work-overlay-categories"><img src="{{ asset(env('THEME')) }}/images/categories.png" alt="Categories" /> in: <a href="#">{{ $item->filter->title }}</a></p>
@@ -39,16 +39,16 @@
                         <div class="related_project {{ ($k==4) ? 'related_project_last' : ''}}">
                             <div class="overlay_a related_img">
                                 <div class="overlay_wrapper">
-                                    <img src="{{ asset(env('THEME')) }}/images/projects/0061-175x175.jpg" alt="0061" title="0061" />
+                                    <img src="{{ asset(env('THEME')) }}/images/projects/{{ $item->img_min }}" alt="0061" title="0061" />
                                     <div class="overlay">
-                                        <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/0061.jpg" rel="lightbox" title=""></a>
+                                        <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/{{ $item->img }}" rel="lightbox" title=""></a>
                                         <a class="overlay_project" href="{{route('portfolios.show', ['alias' => $item->alias])}}"></a>
                                         <span class="overlay_title">{{ $item->title }}</span>
                                     </div>
                                 </div>
                             </div>
                             <h4><a href="{{route('portfolios.show', ['alias' => $item->alias])}}">{{ $item->title }}</a></h4>
-                            <p> {{ str_limit($item->text, 200) }}</p>
+                            <p> {{ str_limit($item->text, 200) }}</p><!--функция-хелпер str_limit обрезает до заданного количества символов, в конце оставляет "..." -->
                         </div>
 
              @endforeach
