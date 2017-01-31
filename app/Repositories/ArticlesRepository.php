@@ -2,11 +2,11 @@
 
 namespace Corp\Repositories;
 
-use Corp\Articles;
+use Corp\Article;
 
 class ArticlesRepository extends Repository{
 
-    public function __construct(Articles $articles) //переменная меню, которая содержит объект меню
+    public function __construct(Article $articles) //переменная меню, которая содержит объект меню
     {
         $this->model = $articles;
     }
