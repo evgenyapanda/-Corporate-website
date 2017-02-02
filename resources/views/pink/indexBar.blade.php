@@ -7,7 +7,7 @@
                  @foreach($articles as $article)
 
                      <div class="hentry-post group">
-                         <div class="thumb-img"><img src="{{ asset(env('THEME')) }}/images/articles/{{ $article->img }}" alt="001" title="001" /></div>
+                         <div class="thumb-img"><img src="{{ asset(env('THEME')) }}/images/articles/{{ $article->img_min }}" alt="001" title="001" /></div>
                          <div class="text">
                              <a href="{{ route('articles.show', ['alias'=>$article->alias]) }}" title="Section shortcodes &amp; sticky posts!" class="title">{{ $article->title }}</a>
 
