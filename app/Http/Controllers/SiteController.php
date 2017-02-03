@@ -11,7 +11,7 @@ class SiteController extends Controller
 {
     //
     protected  $p_rep;  //portfolio
-    protected  $s_rep;
+    protected  $c_rep;  //comments
     protected  $a_rep; //sitebar
     protected  $m_rep; //menu
 
