@@ -60,7 +60,7 @@ class IndexController extends SiteController
     }
 
     protected function getArticles(){
-        $articles = $this->a_rep->get(['title', 'created_at', 'img', 'alias'], Config::get('settings.home_articles_count'));
+        $articles = $this->a_rep->get(['title', 'created_at', 'img', 'alias', 'img_min'], Config::get('settings.home_articles_count'));
 
         return $articles;
     }
