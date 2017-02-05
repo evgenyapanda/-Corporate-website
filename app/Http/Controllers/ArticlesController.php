@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
 
+use Corp\Category;
+
 use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\PortfoliosRepository;
 use Corp\Repositories\CommentsRepository;
+use Corp\Repositories\CategoriesRepository;
 
 class ArticlesController extends SiteController
 {
-    public function __construct(PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep)
+    public function __construct(PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep, CategoriesRepository $cat_rep )
     {
 
         parent::__construct(new \Corp\Repositories\MenusRepository((new \Corp\Menu)));
@@ -21,14 +24,16 @@ class ArticlesController extends SiteController
         $this->a_rep = $a_rep;
         $this->c_rep = $c_rep;
 
+        $this->cat_rep = $cat_rep;
+
         $this->bar = 'right';
         $this->template = env('THEME').'.articles';
     }
 
-    public function index()
+    public function index($cat_alias = false)
     {
         //
-        $articles = $this->getArticles();
+        $articles = $this->getArticles($cat_alias);
 
         $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
         $this->vars = array_add($this->vars, 'content', $content);
@@ -56,8 +61,22 @@ class ArticlesController extends SiteController
         return $portfolios;
     }
 
+    /**
+     * @param bool $alias
+     * @return mixed
+     */
     public function getArticles($alias = false)
     {
+        $where = array();
+        if($alias){
+
+            //$id = $this->cat_rep->get('id')->where('alias', $alias);  //
+       
+            $id = Category::select('id')->where('alias', $alias)->get()->first()->id;
+
+            dd($id);
+        }
+
         $articles = $this->a_rep->get('*', false, true);
 
         if($articles){
