@@ -67,22 +67,38 @@ class ArticlesController extends SiteController
      */
     public function getArticles($alias = false)
     {
-        $where = array();
+        $where = false;
         if($alias){
 
             //$id = $this->cat_rep->get('id')->where('alias', $alias);  //
        
             $id = Category::select('id')->where('alias', $alias)->get()->first()->id;
-
-            dd($id);
+            $where = ['category_id', $id];
         }
 
-        $articles = $this->a_rep->get('*', false, true);
+        $articles = $this->a_rep->get('*', false, true, $where);
 
         if($articles){
            $articles->load('user', 'category', 'comments');
         }
 
         return $articles;
+    }
+
+    public function show($alias = false){
+
+        $article = $this->a_rep->one($alias, ['comments' => true]);
+
+        dd($article);
+
+        $content = view(env('THEME').'.article_content')->with('article', $article)->render();
+        $this->vars = array_add($this->vars, 'content', $content);
+
+        $comments = $this->getComments(config('settings.recent_comments'));
+        $portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
+
+        $this->contentRightBar = view(env('THEME').'.articlesBar')->with(['comments' => $comments, 'portfolios' => $portfolios]);
+
+        return $this->renderOutput();
     }
 }
