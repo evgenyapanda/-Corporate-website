@@ -80,6 +80,8 @@
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.tweetable.js"></script>
 
+    <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.myscripts.js"></script>
+
 </head>
 <!-- END HEAD -->
 <!-- START BODY -->
@@ -125,6 +127,10 @@
         <!-- START SLIDER -->
 
             @yield('slider')
+
+            <div class="wrap_result">
+            </div>
+
 
         <!-- START PRIMARY -->
         <div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'no' }}">
