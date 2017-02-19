@@ -1,5 +1,5 @@
 <?php
-
+putenv('APP_DEBUG');
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

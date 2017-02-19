@@ -61,6 +61,9 @@ class SiteController extends Controller
         return view($this->template)->with($this->vars); //вызывается шаблон и в него передаються переменные
     }
 
+    /**
+     * @return mixed
+     */
     protected function getMenu(){
         $menu = $this->m_rep->get();
 

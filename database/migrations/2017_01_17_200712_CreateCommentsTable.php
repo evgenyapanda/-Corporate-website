@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
 
             $table->string('name');
             $table->string('email');
-            $table->string('site');
-
+            $table->string('site')->default('site');
+            $table->text('text');
             $table->integer('parent_id');
             
             $table->timestamps();

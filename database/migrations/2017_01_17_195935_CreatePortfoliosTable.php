@@ -20,6 +20,9 @@ class CreatePortfoliosTable extends Migration
             $table->string('customer',150);
             $table->string('alias',150)->unique();
             $table->string('img');
+            $table->string('img_min');
+            $table->string('img_medium');
+            $table->string('img_max');
             $table->timestamps();
         });
     }

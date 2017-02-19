@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->text('desc');
             $table->string('alias',150)->unique();
             $table->string('img');
+            $table->string('img_min');
             $table->timestamps();
         });
     }

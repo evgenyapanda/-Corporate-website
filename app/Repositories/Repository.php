@@ -16,6 +16,8 @@ abstract class  Repository{
             $builder->take($take);
         }
 
+
+
         if($where){
             $builder->where($where[0], $where[1]);
         }
@@ -26,7 +28,19 @@ abstract class  Repository{
 
 
         return $builder->get();
+        //return $this->check($builder->get());
     }
+
+    /*protected function check($result){
+        if($result->isEmpty()){
+            return false;
+        }
+        $result->transform(function($item, $key){
+            $item->img = json_decode($item->img);
+            return $item;
+        });
+
+    }*/
 
     public function one($alias, $attr = array()){
 

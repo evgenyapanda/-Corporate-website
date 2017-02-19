@@ -12,13 +12,16 @@ jQuery(document).ready(function($){
         var comParent = $(this);
 
         $('.wrap_result').css('color', 'green').text('Сохранение комментария').fadeIn(500,function(){
+            //var data = $('#commentform').serializeArray();
+
             var data = $('#commentform').serializeArray();
 
-            $.ajax({
 
+            $.ajax({
                 url:$('#commentform').attr('action'),
                 data:data,
-                type:'POST',
+                headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type:'post',
                 datatype:'JSON',
                 success: function(html) {
                     

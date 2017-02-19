@@ -35,8 +35,6 @@ class IndexController extends SiteController
      */
     public function index()
     {
-        //
-
         $portfolios = $this->getPortfolio();
 
         $content = view(env('THEME').'.content')->with('portfolios', $portfolios)->render();
