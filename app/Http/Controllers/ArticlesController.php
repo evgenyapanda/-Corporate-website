@@ -33,6 +33,11 @@ class ArticlesController extends SiteController
     public function index($cat_alias = false)
     {
         //
+
+        $this->title = 'Blog';
+        $this->keywords = 'Info';
+        $this->meta_desc= 'Desc';
+
         $articles = $this->getArticles($cat_alias);
 
         $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
@@ -89,7 +94,12 @@ class ArticlesController extends SiteController
 
         $article = $this->a_rep->one($alias, ['comments' => true]);
 
-       
+
+        $this->title = $article->title;
+        $this->keywords = $article->keywords;
+        $this->meta_desc = $article->meta_desc;
+
+
        // dd($article->comments->groupBy('parent_id'));
         $content = view(env('THEME').'.article_content')->with('article', $article)->render();
         $this->vars = array_add($this->vars, 'content', $content);

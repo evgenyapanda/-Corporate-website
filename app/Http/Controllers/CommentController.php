@@ -6,7 +6,7 @@ namespace Corp\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use Illuminate\Http\Response;
+use Response;
 
 use Auth;
 use Corp\Comment;
