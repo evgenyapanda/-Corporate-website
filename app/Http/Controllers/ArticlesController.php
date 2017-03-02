@@ -18,7 +18,7 @@ class ArticlesController extends SiteController
     public function __construct(PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep, CategoriesRepository $cat_rep )
     {
 
-        parent::__construct(new \Corp\Repositories\MenusRepository((new \Corp\Menu)));
+        parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
 
         $this->p_rep = $p_rep;
         $this->a_rep = $a_rep;

@@ -69,7 +69,7 @@ class SiteController extends Controller
     /**
      * @return mixed
      */
-    protected function getMenu(){
+    public function getMenu(){
         $menu = $this->m_rep->get();
 
 
