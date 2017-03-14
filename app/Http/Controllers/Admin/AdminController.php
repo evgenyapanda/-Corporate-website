@@ -10,6 +10,7 @@ use Corp\Http\Controllers\Controller;
 use Auth;
 use Menu;
 
+
 class AdminController extends \Corp\Http\Controllers\Controller
 {
     //
@@ -25,12 +26,15 @@ class AdminController extends \Corp\Http\Controllers\Controller
     {
         $this->user = Auth::user();
 
+
         if(!$this->user){
             abort(403);
         }
     }
 
     public function renderOutput(){
+
+
         $this->vars = array_add($this->vars, 'title', $this->title);
 
         $menu = $this->getMenu();
